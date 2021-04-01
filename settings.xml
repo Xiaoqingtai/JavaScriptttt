@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<!-- 这个是配置阿里Maven镜像 -->
+	<mirrors>
+		<mirror>  
+			<id>alimaven</id>  
+			<name>aliyun maven</name>  
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>  
+			<mirrorOf>central</mirrorOf>          
+		</mirror> 
+	</mirrors>
+	
+	<profiles>
+		<profile>    
+			<id>jdk-1.8</id>    
+			<activation>    
+				<activeByDefault>true</activeByDefault>    
+				<jdk>1.8</jdk>    
+				</activation>    
+		<properties>    
+		<maven.compiler.source>1.8</maven.compiler.source>    
+		<maven.compiler.target>1.8</maven.compiler.target>    
+		<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>    
+		</properties>    
+		</profile> 
+
+		<profile>
+			<id>nexus</id>
+			<repositories>
+				<repository>
+					<id>central</id>
+					<url>http://repo.maven.apache.org/maven2</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>ansj-repo</id>
+					<name>ansj Repository</name>
+					<url>http://maven.nlpcn.org/</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
+ 
+	<activeProfiles>
+		<activeProfile>nexus</activeProfile>
+	</activeProfiles>
+</settings>
